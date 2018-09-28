@@ -5,13 +5,6 @@ const ShelfChanger = props => {
   const onChangeShelf = props.onChangeShelf;
   let currentShelf = "none";
 
-  //if book is in current list set current shelf to book.shelf or else set it to none.
-  for (let b of books) {
-    if (b.id === props.book.id) {
-      currentShelf = b.shelf;
-      break;
-    }
-  }
 
   return (
     <div className="book-shelf-changer">

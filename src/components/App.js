@@ -24,8 +24,25 @@ class BooksApp extends React.Component {
     });
   }
 
+  /* This function is called to change the shelf 
+  -- call the update with newBook and newShelf
+  -- change the shelf of the book with new shelf
+  -- get filtered list of books which dont contain our new book and then push it on to the array.
+  -- set state as filteredBooks.
+  */
+
   onChangeShelf = (newBook, newShelf) => {
-    console.log(newBook, newShelf);
+   BooksAPI.update(newBook,newShelf).then((response) =>{
+     
+     newBook.shelf = newShelf;
+
+     var filteredBooks = this.state.books.filter((book) => (book.id !== newBook.id));
+
+     filteredBooks.push(newBook);
+     this.setState({books: filteredBooks})
+
+
+   })
   };
 
   render() {
