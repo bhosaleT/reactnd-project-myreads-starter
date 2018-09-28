@@ -1,20 +1,26 @@
 import React from "react";
-import noCover from '../icons/no-cover-image.png';
+import noCover from "../icons/no-cover-image.png";
 // import ShelfChanger from "./ShelfChanger";
 
 const Book = props => {
+
   /* Destructing the props object and getting the shelfedBooks from it.
-  TODO: setup the state to get books from the API and then pass it into this component.
+  -- Was having trouble with books that dont have imageLinks so I just filtered those books out in this component
+  -- Could have done in previous components, I just did it here. because i encountered the problem here.
   */
+ 
   const { shelvedBooks } = props;
+  const shelvedBooksWithThumbnails = shelvedBooks.filter(
+    book => book.imageLinks
+  );
   return (
     <div className="bookshelf-books">
       <ol className="books-grid">
         {/* 
          -- Loop over shelfedBooks and then show them   
          */
-        shelvedBooks.length > 0 &&
-          shelvedBooks.map(book => (
+        shelvedBooksWithThumbnails.length > 0 &&
+          shelvedBooksWithThumbnails.map(book => (
             <li key={book.id}>
               <div className="book">
                 <div className="book-top">
