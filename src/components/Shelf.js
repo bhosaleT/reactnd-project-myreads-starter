@@ -1,6 +1,7 @@
 import React from "react";
 import Book from "./Book";
 import Loading from "./Loading";
+import PropTypes from 'prop-types';
 /* 
 -- Individual shelfs created for currentlyReading, wantToRead, Read and passing those props into it.
 -- Loading component is a simple component which creates a simple loading screen type animation.
@@ -47,3 +48,7 @@ const Shelf = props => (
 );
 
 export default Shelf;
+Shelf.propTypes = {
+  onChangeShelf: PropTypes.func.isRequired,
+  shelvedBooks: PropTypes.array.isRequired
+}

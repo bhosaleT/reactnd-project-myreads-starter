@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PopupComponent from "./PopupComponent";
 import Book from "./Book";
 import * as BooksAPI from "../utils/BooksAPI";
+import PropTypes from 'prop-types';
 
 class SearchPage extends React.Component {
   state = {
@@ -86,3 +87,7 @@ class SearchPage extends React.Component {
 }
 
 export default SearchPage;
+
+SearchPage.propTypes = {
+  onChangeShelf: PropTypes.func.isRequired
+}

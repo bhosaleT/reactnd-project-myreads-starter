@@ -3,6 +3,8 @@ import React from "react";
 import Header from "./Header";
 import Shelf from "./Shelf";
 import SearchComponent from "./SearchComponent";
+import PropTypes from 'prop-types';
+
 
 const Main = props => {
   const { shelvedBooks, onChangeShelf } = props;
@@ -33,3 +35,8 @@ const Main = props => {
 };
 
 export default Main;
+
+Main.propTypes = {
+  shelvedBooks: PropTypes.array.isRequired,
+  onChangeShelf: PropTypes.func.isRequired
+}
