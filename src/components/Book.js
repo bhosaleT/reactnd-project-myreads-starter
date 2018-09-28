@@ -1,4 +1,5 @@
 import React from "react";
+import noCover from '../icons/no-cover-image.png';
 // import ShelfChanger from "./ShelfChanger";
 
 const Book = props => {
@@ -22,7 +23,7 @@ const Book = props => {
                     style={{
                       width: 128,
                       height: 193,
-                      backgroundImage: `url(${book.imageLinks.thumbnail})`
+                      backgroundImage: `url(${book.imageLinks.thumbnail} )`
                     }}
                   />
                 </div>

@@ -1,10 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PopupComponent from './PopupComponent';
+import PopupComponent from "./PopupComponent";
+import Book from "./Book";
+import * as BooksAPI from "../utils/BooksAPI";
 
 class SearchPage extends React.Component {
-  searchBooks = query => {
-    console.log(`search for the book ${query}`);
+  state = {
+    query: "",
+    searchedBooks: [],
+    searchError: false
+  };
+
+  /* Search books function
+-- takes in a query from onChange.
+-- setState it to query {Controlled Component}
+-- if(query) exists search using BooksAPI add the returned results to searchedBooks else set it to empty array.
+*/
+
+  searchBooks = event => {
+    const queryVariable = event.target.value.trim();
+    this.setState({
+      query: queryVariable
+    });
+
+    if (queryVariable) {
+      BooksAPI.search(queryVariable).then(books => {
+        books.length > 0
+          ? this.setState({
+              searchedBooks: books,
+              searchError: false
+            })
+          : this.setState({
+              searchedBooks: [],
+              searchError: true
+            });
+      });
+    } else {
+      this.setState({
+        searchedBooks: [],
+        searchError: false
+      });
+    }
     /* TODO: 
         1. use the booksApi to search for books 
         2. Add that to a results array 
@@ -13,6 +49,7 @@ class SearchPage extends React.Component {
         5. Also add a state for SearchError to keep track if no books came back.
         6. if no books came back show an error.
         */
+    //  console.log(this.state.query)
   };
 
   render() {
@@ -26,14 +63,22 @@ class SearchPage extends React.Component {
             <input
               type="text"
               placeholder="Search by title or author"
-              onChange={event => {
-                this.searchBooks(event.target.value);
-              }}
+              value={this.state.query}
+              onChange={this.searchBooks}
             />
           </div>
         </div>
         <div className="search-books-results">
-         <PopupComponent />
+          {this.state.searchedBooks.length > 0 && (
+            <div>
+              <div>
+                <h3>Search returned {this.state.searchedBooks.length}</h3>
+              </div>
+              <Book shelvedBooks={this.state.searchedBooks} />
+            </div>
+          )}
+          {this.state.searchError && <h3>No Books found. Try Again</h3>}
+          <PopupComponent />
         </div>
       </div>
     );
