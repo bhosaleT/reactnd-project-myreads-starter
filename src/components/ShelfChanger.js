@@ -4,8 +4,7 @@ const ShelfChanger = props => {
   const books = props.books;
   const onChangeShelf = props.onChangeShelf;
   let currentShelf = "none";
-
-
+  
   return (
     <div className="book-shelf-changer">
       <select

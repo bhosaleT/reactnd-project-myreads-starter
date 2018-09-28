@@ -32,17 +32,18 @@ class BooksApp extends React.Component {
   */
 
   onChangeShelf = (newBook, newShelf) => {
-   BooksAPI.update(newBook,newShelf).then((response) =>{
-     
-     newBook.shelf = newShelf;
+    BooksAPI.update(newBook, newShelf).then(() => {
+      newBook.shelf = newShelf;
 
-     var filteredBooks = this.state.books.filter((book) => (book.id !== newBook.id));
+      //filtered list without the new book
+      var filteredBooks = this.state.books.filter(
+        book => book.id !== newBook.id
+      );
 
-     filteredBooks.push(newBook);
-     this.setState({books: filteredBooks})
-
-
-   })
+      //push the new book to the array.
+      filteredBooks.push(newBook);
+      this.setState({ books: filteredBooks });
+    });
   };
 
   render() {
@@ -52,9 +53,17 @@ class BooksApp extends React.Component {
           <Route
             exact
             path="/"
-            render={() => <Main onChangeShelf={this.onChangeShelf}  shelvedBooks={this.state.books} />}
+            render={() => (
+              <Main
+                onChangeShelf={this.onChangeShelf}
+                shelvedBooks={this.state.books}
+              />
+            )}
           />
-          <Route path="/search" render={()=> <SearchPage onChangeShelf={this.onChangeShelf} /> } />
+          <Route
+            path="/search"
+            render={() => <SearchPage onChangeShelf={this.onChangeShelf} />}
+          />
           <Route component={NotFound} />
         </Switch>
       </div>
@@ -68,5 +77,7 @@ export default BooksApp;
 ++ componentDidMount() gets the books and they are passed into the Main.js Component.
 ++ In the main component the books are divided into individual shelves and then forwarded to the Shelf Component
 ++ Shelf component has 3 different shelves into which individual shelf props are passed.
-++ TODO: Add search State to the search page and fetch books using the API and add it to state and then loop over those books and display those books.
+++ Added searchedBooks state and searchError to get books from the API and then display it.
+++ onShelfChange() will take in newBook and the newIntended shelf change the shelf of the book and then get a new array of filteredBooks
+   push the new book on it and then setState.
 */
