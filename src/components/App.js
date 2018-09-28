@@ -24,6 +24,10 @@ class BooksApp extends React.Component {
     });
   }
 
+  onChangeShelf = (newBook, newShelf) => {
+    console.log(newBook, newShelf);
+  };
+
   render() {
     return (
       <div className="app">
@@ -31,9 +35,9 @@ class BooksApp extends React.Component {
           <Route
             exact
             path="/"
-            render={() => <Main shelvedBooks={this.state.books} />}
+            render={() => <Main onChangeShelf={this.onChangeShelf}  shelvedBooks={this.state.books} />}
           />
-          <Route path="/search" component={SearchPage} />
+          <Route path="/search" render={()=> <SearchPage onChangeShelf={this.onChangeShelf} /> } />
           <Route component={NotFound} />
         </Switch>
       </div>

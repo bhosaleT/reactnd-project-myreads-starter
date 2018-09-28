@@ -13,7 +13,10 @@ const Shelf = props => (
       <div className="bookshelf">
         <h2 className="bookshelf-title">Currently Reading</h2>
         {props.currentlyReading.length > 0 ? (
-          <Book shelvedBooks={props.currentlyReading} />
+          <Book
+            onChangeShelf={props.onChangeShelf}
+            shelvedBooks={props.currentlyReading}
+          />
         ) : (
           <Loading />
         )}
@@ -22,7 +25,10 @@ const Shelf = props => (
       <div className="bookshelf">
         <h2 className="bookshelf-title">Want To Read</h2>
         {props.wantToRead.length > 0 ? (
-          <Book shelvedBooks={props.wantToRead} />
+          <Book
+            onChangeShelf={props.onChangeShelf}
+            shelvedBooks={props.wantToRead}
+          />
         ) : (
           <Loading />
         )}
@@ -31,7 +37,7 @@ const Shelf = props => (
       <div className="bookshelf">
         <h2 className="bookshelf-title">Read</h2>
         {props.read.length > 0 ? (
-          <Book shelvedBooks={props.read} />
+          <Book onChangeShelf={props.onChangeShelf} shelvedBooks={props.read} />
         ) : (
           <Loading />
         )}

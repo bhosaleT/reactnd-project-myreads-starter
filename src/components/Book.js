@@ -9,7 +9,7 @@ const Book = props => {
   -- Could have done in previous components, I just did it here. because i encountered the problem here.
   */
  
-  const { shelvedBooks } = props;
+  const { shelvedBooks, onChangeShelf } = props;
   const shelvedBooksWithThumbnails = shelvedBooks.filter(
     book => book.imageLinks
   );
@@ -35,6 +35,7 @@ const Book = props => {
                   <ShelfChanger 
                   book = {book}
                   books = {shelvedBooksWithThumbnails}
+                  onChangeShelf={onChangeShelf}
                   />
                 </div>
                 <div className="book-title">{book.title}</div>

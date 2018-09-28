@@ -5,7 +5,7 @@ import Shelf from "./Shelf";
 import SearchComponent from "./SearchComponent";
 
 const Main = props => {
-  const { shelvedBooks } = props;
+  const { shelvedBooks, onChangeShelf } = props;
   /* DIVIDING THE BOOKS RECEIVED FROM SHELVEDBOOKS INTO INDIVIDUAL SHELVES 
  - currentlyReading.
  - wantToRead.
@@ -25,6 +25,7 @@ const Main = props => {
         currentlyReading={currentlyReading}
         wantToRead={wantToRead}
         read={read}
+        onChangeShelf={onChangeShelf}
       />
       <SearchComponent />
     </div>

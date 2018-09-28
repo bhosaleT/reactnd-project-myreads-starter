@@ -2,6 +2,7 @@ import React from "react";
 
 const ShelfChanger = props => {
   const books = props.books;
+  const onChangeShelf = props.onChangeShelf;
   let currentShelf = "none";
 
   //if book is in current list set current shelf to book.shelf or else set it to none.
@@ -14,7 +15,10 @@ const ShelfChanger = props => {
 
   return (
     <div className="book-shelf-changer">
-      <select defaultValue={currentShelf}>
+      <select
+        onChange={event => onChangeShelf(props.book, event.target.value)}
+        defaultValue={currentShelf}
+      >
         <option value="none" disabled>
           Move to...
         </option>

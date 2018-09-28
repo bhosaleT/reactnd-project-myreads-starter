@@ -74,7 +74,7 @@ class SearchPage extends React.Component {
               <div>
                 <h3>Search returned {this.state.searchedBooks.length}</h3>
               </div>
-              <Book shelvedBooks={this.state.searchedBooks} />
+              <Book onChangeShelf = {this.props.onChangeShelf} shelvedBooks={this.state.searchedBooks} />
             </div>
           )}
           {this.state.searchError && <h3>No Books found. Try Again</h3>}
