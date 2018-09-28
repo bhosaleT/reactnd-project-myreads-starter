@@ -50,5 +50,7 @@ const Shelf = props => (
 export default Shelf;
 Shelf.propTypes = {
   onChangeShelf: PropTypes.func.isRequired,
-  shelvedBooks: PropTypes.array.isRequired
+  currentlyReading: PropTypes.array.isRequired,
+  wantToRead: PropTypes.array.isRequired,
+  read: PropTypes.array.isRequired
 }
