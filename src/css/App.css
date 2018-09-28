@@ -172,3 +172,29 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+/* TRIGGER BUTTON */
+.trigger-button {
+  color: white;
+  background: #272727;
+  padding: 10px;
+  margin:50px 0;
+  font-size: 15px;
+  position: fixed;
+  top: 10px;
+  right: 0;
+  /* border-radius: 10px; */
+  outline: none;
+  border: none;
+}
+
+
+
+.trigger-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
+}
+.trigger-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+}
