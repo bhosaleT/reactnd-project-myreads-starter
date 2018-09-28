@@ -109,7 +109,7 @@ font-family: 'Pacifico', cursive;
 
 .books-grid {
   list-style-type: none;
-  padding: 0 40px 0 40px;
+  padding: 0 60px 0 60px;
   margin: 0;
 
   display: grid;
