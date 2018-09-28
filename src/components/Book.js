@@ -1,5 +1,5 @@
 import React from "react";
-import ShelfChanger from "./ShelfChanger";
+// import ShelfChanger from "./ShelfChanger";
 
 const Book = props => {
   /* Destructing the props object and getting the shelfedBooks from it.
@@ -8,7 +8,7 @@ const Book = props => {
   const { shelvedBooks } = props;
   return (
     <div className="bookshelf-books">
-      <ol className="books-gird">
+      <ol className="books-grid">
         {/* 
          -- Loop over shelfedBooks and then show them   
          */
@@ -20,12 +20,11 @@ const Book = props => {
                   <div
                     className="book-cover"
                     style={{
-                        width: 128,
-                        height: 193,
+                      width: 128,
+                      height: 193,
                       backgroundImage: `url(${book.imageLinks.thumbnail})`
                     }}
                   />
-                  <ShelfChanger />
                 </div>
                 <div className="book-title">{book.title}</div>
                 {/* 
