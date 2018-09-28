@@ -5,21 +5,23 @@ const Book = props => {
   /* Destructing the props object and getting the shelfedBooks from it.
   TODO: setup the state to get books from the API and then pass it into this component.
   */
-  const { shelfedBooks } = props;
+  const { shelvedBooks } = props;
   return (
     <div className="bookshelf-books">
       <ol className="books-gird">
         {/* 
          -- Loop over shelfedBooks and then show them   
          */
-        shelfedBooks.length > 0 &&
-          shelfedBooks.map(book => (
+        shelvedBooks.length > 0 &&
+          shelvedBooks.map(book => (
             <li key={book.id}>
               <div className="book">
                 <div className="book-top">
                   <div
                     className="book-cover"
                     style={{
+                        width: 128,
+                        height: 193,
                       backgroundImage: `url(${book.imageLinks.thumbnail})`
                     }}
                   />

@@ -3,7 +3,7 @@ import React from 'react';
 const ShelfChanger = (props) =>{
     return(
         <div>
-        <h2>Shelfchanger component</h2>
+       <p>ShelfChanger component</p>
         </div>
     )
 }

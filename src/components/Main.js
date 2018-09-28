@@ -5,11 +5,11 @@ import Shelf from './Shelf';
 import SearchComponent from './SearchComponent';
 
 const Main = (props) => {
-
+ const {shelvedBooks} = props;
     return(
         <div>
             <Header />
-            <Shelf />
+            <Shelf shelvedBooks={shelvedBooks} />
             <SearchComponent />
         </div>
         
