@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class SearchPage extends React.Component {
+    
   searchBooks = query => {
     console.log(`search for the book ${query}`);
     /* TODO: 
@@ -13,7 +14,7 @@ class SearchPage extends React.Component {
   };
 
   render() {
-      
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
