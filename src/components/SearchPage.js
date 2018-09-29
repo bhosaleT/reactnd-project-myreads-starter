@@ -70,7 +70,10 @@ class SearchPage extends React.Component {
     let hasShelf = this.props.shelvedBooks.filter(
       filteredBook => filteredBook.id === book.id
     );
-    return hasShelf.length ? hasShelf[0].shelf : "none";
+    return hasShelf.length
+      ? // console.log(hasShelf[0].shelf)
+        hasShelf[0].shelf
+      : "none";
   }
 
   render() {
