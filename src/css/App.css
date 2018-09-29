@@ -113,8 +113,8 @@ font-family: 'Pacifico', cursive;
   margin: 0;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
 
   /* display: flex;
   justify-content: center;
@@ -205,3 +205,4 @@ font-family: 'Pacifico', cursive;
   transform: translateY(-1px);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
 }
+

@@ -3,7 +3,10 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-rater": "^5.0.3",
+    "react-rating": "^1.4.0",
     "react-router-dom": "^4.3.1",
+    "react-star-rating-component": "^1.4.1",
     "reactjs-popup": "^1.2.0"
   },
   "devDependencies": {
