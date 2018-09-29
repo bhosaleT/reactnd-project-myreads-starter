@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PopupComponent from "./PopupComponent";
 import Book from "./Book";
 import * as BooksAPI from "../utils/BooksAPI";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class SearchPage extends React.Component {
   state = {
@@ -11,38 +11,7 @@ class SearchPage extends React.Component {
     searchedBooks: [],
     searchError: false
   };
-
-  /* Search books function
--- takes in a query from onChange.
--- setState it to query {Controlled Component}
--- if(query) exists search using BooksAPI add the returned results to searchedBooks else set it to empty array.
-*/
-
-  searchBooks = event => {
-    const queryVariable = event.target.value.trim();
-    this.setState({
-      query: queryVariable
-    });
-
-    if (queryVariable) {
-      BooksAPI.search(queryVariable).then(books => {
-        books.length > 0
-          ? this.setState({
-              searchedBooks: books,
-              searchError: false
-            })
-          : this.setState({
-              searchedBooks: [],
-              searchError: true
-            });
-      });
-    } else {
-      this.setState({
-        searchedBooks: [],
-        searchError: false
-      });
-    }
-    /* TODO: 
+  /* TODO: 
         1. use the booksApi to search for books 
         2. Add that to a results array 
         3. Add that array to state 
@@ -50,8 +19,59 @@ class SearchPage extends React.Component {
         5. Also add a state for SearchError to keep track if no books came back.
         6. if no books came back show an error.
         */
-    //  console.log(this.state.query)
+  //  console.log(this.state.query)
+  /* Search books function
+-- takes in a query from onChange.
+-- setState it to query {Controlled Component}
+-- if(query) exists search using BooksAPI add the returned results to searchedBooks else set it to empty array.
+*/
+
+  searchBooks = event => {
+    const queryVariable = event.target.value;
+    this.setState({
+      query: queryVariable
+    });
+
+    let searchResults = [];
+
+    if (queryVariable) {
+      BooksAPI.search(queryVariable.trim()).then(books => {
+        if (books && books.length) {
+          searchResults = books.map(book => {
+            book.shelf = this.addToShelf(book);
+            return book;
+          });
+          this.setState({
+            searchedBooks: searchResults,
+            searchError: false
+          });
+        } else {
+          this.setState({
+            searchedBooks: [],
+            searchError: true
+          });
+        }
+      });
+    } else {
+      this.setState({
+        searchedBooks: [],
+        searchError: false
+      });
+    }
+
+    // console.log(this.state.searchedBooks);
   };
+  /* 
+  -- we get books back from the API search. Loop over those books
+  -- check if the new searchedBook exists in our shelvedBooks.
+  -- if it exists return its shelf value else return shelf value as none.
+  */
+  addToShelf(book) {
+    let hasShelf = this.props.shelvedBooks.filter(
+      filteredBook => filteredBook.id === book.id
+    );
+    return hasShelf.length ? hasShelf[0].shelf : "none";
+  }
 
   render() {
     return (
@@ -75,7 +95,10 @@ class SearchPage extends React.Component {
               <div>
                 <h3>Search returned {this.state.searchedBooks.length}</h3>
               </div>
-              <Book onChangeShelf = {this.props.onChangeShelf} shelvedBooks={this.state.searchedBooks} />
+              <Book
+                onChangeShelf={this.props.onChangeShelf}
+                shelvedBooks={this.state.searchedBooks}
+              />
             </div>
           )}
           {this.state.searchError && <h3>No Books found. Try Again</h3>}
@@ -90,4 +113,4 @@ export default SearchPage;
 
 SearchPage.propTypes = {
   onChangeShelf: PropTypes.func.isRequired
-}
+};

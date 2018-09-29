@@ -62,7 +62,7 @@ class BooksApp extends React.Component {
           />
           <Route
             path="/search"
-            render={() => <SearchPage onChangeShelf={this.onChangeShelf} />}
+            render={() => <SearchPage shelvedBooks={this.state.books} onChangeShelf={this.onChangeShelf} />}
           />
           <Route component={NotFound} />
         </Switch>
