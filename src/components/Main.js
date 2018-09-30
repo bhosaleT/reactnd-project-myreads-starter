@@ -3,7 +3,6 @@ import React from "react";
 import Shelf from "./Shelf";
 import PropTypes from "prop-types";
 import Header from "./Header";
-import Loading from "./Loading";
 
 const Main = props => {
   const { shelvedBooks, onChangeShelf } = props;
@@ -23,29 +22,19 @@ const Main = props => {
     <div className="list-books">
       <Header />
       <div className="list-books-content">
-        {currentlyReading.length > 0 ? (
-          <Shelf
-            books={currentlyReading}
-            title="Currently Reading"
-            onChangeShelf={onChangeShelf}
-          />
-        ) : (
-          <Loading />
-        )}
-        {wantToRead.length > 0 ? (
-          <Shelf
-            books={wantToRead}
-            title="Want to Read"
-            onChangeShelf={onChangeShelf}
-          />
-        ) : (
-          <Loading />
-        )}
-        {read.length > 0 ? (
-          <Shelf books={read} title="Read" onChangeShelf={onChangeShelf} />
-        ) : (
-          <Loading />
-        )}
+        <Shelf
+          books={currentlyReading}
+          title="Currently Reading"
+          onChangeShelf={onChangeShelf}
+        />
+
+        <Shelf
+          books={wantToRead}
+          title="Want to Read"
+          onChangeShelf={onChangeShelf}
+        />
+
+        <Shelf books={read} title="Read" onChangeShelf={onChangeShelf} />
       </div>
     </div>
   );
