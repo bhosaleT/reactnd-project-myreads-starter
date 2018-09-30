@@ -2,13 +2,13 @@ import React from "react";
 import ShelfChanger from "./ShelfChanger";
 import PropTypes from "prop-types";
 import StarRatingComponent from "react-star-rating-component";
-import noCover from '../images/NoBookCover.png';
+import noCover from "../images/NoBookCover.png";
 
 const Book = props => {
-  /* Destructing the props object and getting the shelfedBooks from it.
-  -- Was having trouble with books that dont have imageLinks so I just filtered those books out in this component
-  -- Could have done in previous components, I just did it here. because i encountered the problem here.
+  /* Importing a default cover for books which dont have thumbnails. 
+     check if images exist if not use default.
   */
+
   const book = props.book;
   const onChangeShelf = props.onChangeShelf;
   const cover = book.imageLinks ? book.imageLinks.thumbnail : noCover;
@@ -27,8 +27,8 @@ const Book = props => {
       </div>
       <div className="book-title">{book.title}</div>
       {/* 
-                    Checking for multiple authors by mapping over them 
-                    */
+        Checking for multiple authors by mapping over them 
+       */
       book.authors &&
         book.authors.map((author, index) => (
           <div className="book-authors" key={index}>

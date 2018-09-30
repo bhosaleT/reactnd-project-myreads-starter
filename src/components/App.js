@@ -5,6 +5,7 @@ import * as BooksAPI from "../utils/BooksAPI";
 import Main from "./Main";
 import SearchPage from "./SearchPage";
 import NotFound from "./NotFound";
+import SearchComponent from "./SearchComponent";
 
 class BooksApp extends React.Component {
   /* This state will keep tracks of all the books. */
@@ -60,12 +61,19 @@ class BooksApp extends React.Component {
               />
             )}
           />
+
           <Route
             path="/search"
-            render={() => <SearchPage shelvedBooks={this.state.books} onChangeShelf={this.onChangeShelf} />}
+            render={() => (
+              <SearchPage
+                shelvedBooks={this.state.books}
+                onChangeShelf={this.onChangeShelf}
+              />
+            )}
           />
           <Route component={NotFound} />
         </Switch>
+        <SearchComponent />
       </div>
     );
   }
