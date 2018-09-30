@@ -23,12 +23,23 @@ const Main = props => {
   return (
     <div className="list-books">
       <Header />
+      <div className="list-books-content">
       <Shelf
-        currentlyReading={currentlyReading}
-        wantToRead={wantToRead}
-        read={read}
+        books={currentlyReading} 
+        title="Currently Reading"
         onChangeShelf={onChangeShelf}
       />
+        <Shelf
+          books={wantToRead}
+          title="Want to Read"
+          onChangeShelf={onChangeShelf}
+        />
+        <Shelf
+          books={read}
+          title="Read"
+          onChangeShelf={onChangeShelf}
+        />
+      </div>
       <SearchComponent />
     </div>
   );

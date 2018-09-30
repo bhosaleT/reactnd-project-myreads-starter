@@ -98,10 +98,15 @@ class SearchPage extends React.Component {
               <div>
                 <h3>Search returned {this.state.searchedBooks.length}</h3>
               </div>
-              <Book
-                onChangeShelf={this.props.onChangeShelf}
-                shelvedBooks={this.state.searchedBooks}
-              />
+              <ol className="books-grid">
+                {this.state.searchedBooks.map(book => (
+                  <Book
+                    key={book.id}
+                    book={book}
+                    onChangeShelf={this.props.onChangeShelf}
+                  />
+                ))}
+              </ol>
             </div>
           )}
           {this.state.searchError && <h3>No Books found. Try Again</h3>}
