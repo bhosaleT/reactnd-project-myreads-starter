@@ -5,6 +5,7 @@
 - This project is part of Udacity FrontEnd developer nanodegree.
 - Its a simple Book Shelf managament app in which there are three shelfs "Currently Reading", "Want to Read", "Read" and you can move the books from one shelf to another using a simple drop-down menu.
 - There is also a search component which will let you search for books and then use the drop down menu to add that particular book to one of the shelves.
+- Live Demo [Demo](https://react-bookish.herokuapp.com/) - Bookish
 
 ## TO GET STARTED
 
