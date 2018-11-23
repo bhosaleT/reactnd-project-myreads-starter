@@ -44,6 +44,7 @@ body,
   /* border-bottom: 1px solid #dedede; */
   font-family: 'Roboto Mono', monospace;
   color: #3A6E23;
+  /* width: 200px; */
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: .15em solid #272727; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
