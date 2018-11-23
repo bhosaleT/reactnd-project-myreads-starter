@@ -15,14 +15,14 @@ body,
 
 .list-books-title {
   padding: 10px 0;
-  background: #272727;
+  background: #244000;
   text-align: center;
 }
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
   color: white;
-  font-family: "Pacifico", cursive;
+ font-family: 'Cedarville Cursive', cursive;
 }
 
 .list-books-content {
@@ -41,9 +41,32 @@ body,
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
-  font-family: "Pacifico", cursive;
+  /* border-bottom: 1px solid #dedede; */
+  font-family: 'Roboto Mono', monospace;
+  color: #3A6E23;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid #272727; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 10px auto 10px auto; /* Gives that scrolling effect as the typing happens */
+  animation: 
+    typing 3.5s steps(30, end),
+    blinking-cursor .5s step-end infinite;
 }
+
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blinking-cursor {
+  from, to { border-color: transparent }
+  50% { border-color: #272727; }
+}
+
+
 .bookshelf-books {
   text-align: center;
 }
@@ -58,7 +81,7 @@ body,
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #272727;
+  background: #244000;
   background-image: url("../icons/add.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -139,7 +162,7 @@ body,
   margin-top: 10px;
 }
 .book-authors {
-  color: #999;
+  color: #447344;
 }
 
 .book-top {
@@ -156,7 +179,7 @@ body,
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #272727;
+  background: #3A6E23;
   background-image: url("../icons/arrow-drop-down.svg");
   background-repeat: no-repeat;
   background-position: center;
